@@ -1,0 +1,3 @@
+curl -X POST http://localhost:8080/assurance/MalusBonusService -H 'content-type: application/json' -H 'accept: application/json' -d '{"Conducteur": {"Anciennete": 5,"Age": 5,"Incidents": 5}}'
+
+
