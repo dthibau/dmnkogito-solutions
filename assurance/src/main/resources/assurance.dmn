@@ -7,6 +7,9 @@
     </dmn:itemComponent>
     <dmn:itemComponent id="_2B85FBB1-F7D9-4FC5-A766-92FEA2AEC53E" name="Age" isCollection="false">
       <dmn:typeRef>number</dmn:typeRef>
+      <dmn:allowedValues kie:constraintType="range" id="_84EFC33B-DB31-463A-AA07-62C44DFADD47">
+        <dmn:text>[18..89]</dmn:text>
+      </dmn:allowedValues>
     </dmn:itemComponent>
     <dmn:itemComponent id="_5599BC0C-7801-4282-9C01-CAC3D026D179" name="Incidents" isCollection="false">
       <dmn:typeRef>number</dmn:typeRef>
@@ -60,7 +63,7 @@
     <dmn:informationRequirement id="_860E6077-F57D-4E26-836D-6EBE085F79DA">
       <dmn:requiredInput href="#_3D637DF4-74FA-40A7-8647-AD3EF90A5677"/>
     </dmn:informationRequirement>
-    <dmn:decisionTable id="_DC73451C-52B8-486C-900C-C4434423106F" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+    <dmn:decisionTable id="_DC73451C-52B8-486C-900C-C4434423106F" hitPolicy="ANY" preferredOrientation="Rule-as-Row">
       <dmn:input id="_0FEED697-9A5F-4017-8A75-847F3D379513">
         <dmn:inputExpression id="_012E9062-A5D3-43A0-9A3C-155609438265" typeRef="number">
           <dmn:text>Conducteur.Anciennete</dmn:text>
@@ -135,10 +138,38 @@
     <dmn:informationRequirement id="_142EA398-485F-4B47-ABA0-C44E62C125B6">
       <dmn:requiredDecision href="#_00B97603-81C3-4030-9F87-0D3FD29A4DC9"/>
     </dmn:informationRequirement>
-    <dmn:literalExpression id="_FB41BA32-B69D-4308-9983-C524F55F27F5">
-      <dmn:text>Prix de base - Total bonus/malus/100 * Prix de base</dmn:text>
-    </dmn:literalExpression>
+    <dmn:knowledgeRequirement id="_9991E20D-A581-4CA3-83B7-A0BD35D3801D">
+      <dmn:requiredKnowledge href="#_CDEB6741-7DCC-49E6-A92E-44A7C277275C"/>
+    </dmn:knowledgeRequirement>
+    <dmn:invocation id="_8A4E7100-408A-4E6C-B752-540B7E2AE2F2">
+      <dmn:literalExpression id="_9E573B7D-DF0A-4559-9ABC-FBD9D2E1B0AD">
+        <dmn:text>Appliquer pourcentage</dmn:text>
+      </dmn:literalExpression>
+      <dmn:binding>
+        <dmn:parameter id="_CE5B4A3B-6443-4524-AE0C-2072965DA9B9" name="prix" typeRef="number"/>
+        <dmn:literalExpression id="_C416E2FF-C8FD-49F7-A8D3-A3489ACFAE14">
+          <dmn:text>Prix de base</dmn:text>
+        </dmn:literalExpression>
+      </dmn:binding>
+      <dmn:binding>
+        <dmn:parameter id="_E8BC078A-3EB9-4BB8-94C6-9D13E90D9B7A" name="remise" typeRef="number"/>
+        <dmn:literalExpression id="_A47BDBD0-2CC8-456C-A948-5FA7015D629F">
+          <dmn:text>Total bonus/malus</dmn:text>
+        </dmn:literalExpression>
+      </dmn:binding>
+    </dmn:invocation>
   </dmn:decision>
+  <dmn:businessKnowledgeModel id="_CDEB6741-7DCC-49E6-A92E-44A7C277275C" name="Appliquer pourcentage">
+    <dmn:extensionElements/>
+    <dmn:variable id="_630E12A6-5706-4C9B-9C8F-C244549A4846" name="Appliquer pourcentage" typeRef="number"/>
+    <dmn:encapsulatedLogic id="_62426FD8-CD5E-47E1-A430-9A870AC5E8EC" kind="FEEL">
+      <dmn:formalParameter id="_2EB50453-C049-4467-96A3-1216D8A2FEEC" name="prix" typeRef="number"/>
+      <dmn:formalParameter id="_41E70167-FEC8-4EEC-BD4C-B542F284029E" name="remise" typeRef="number"/>
+      <dmn:literalExpression id="_A72E8E9B-B2B8-4867-A28A-093B699F3E6F">
+        <dmn:text>prix - (remise/100 * prix)</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="_E240B4FF-7073-4C63-92FE-E70EBBF24B24" name="DRG">
       <di:extension>
@@ -161,7 +192,23 @@
           <kie:ComponentWidths dmnElementRef="_5BD3142E-178B-4A76-803A-FF4F97C59017">
             <kie:width>300</kie:width>
           </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_FB41BA32-B69D-4308-9983-C524F55F27F5">
+          <kie:ComponentWidths dmnElementRef="_8A4E7100-408A-4E6C-B752-540B7E2AE2F2">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>300</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_9E573B7D-DF0A-4559-9ABC-FBD9D2E1B0AD"/>
+          <kie:ComponentWidths dmnElementRef="_C416E2FF-C8FD-49F7-A8D3-A3489ACFAE14">
+            <kie:width>300</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_A47BDBD0-2CC8-456C-A948-5FA7015D629F">
+            <kie:width>300</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_A72E8E9B-B2B8-4867-A28A-093B699F3E6F">
+            <kie:width>300</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_62426FD8-CD5E-47E1-A430-9A870AC5E8EC">
+            <kie:width>50</kie:width>
             <kie:width>300</kie:width>
           </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
@@ -220,6 +267,15 @@
         <dc:Bounds x="279" y="63" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_CDEB6741-7DCC-49E6-A92E-44A7C277275C" dmnElementRef="_CDEB6741-7DCC-49E6-A92E-44A7C277275C" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="496.29906542056074" y="6" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNEdge id="dmnedge-drg-_DAEAE4D1-5403-4806-B8E9-3D09724992C4" dmnElementRef="_DAEAE4D1-5403-4806-B8E9-3D09724992C4">
         <di:waypoint x="485" y="462"/>
         <di:waypoint x="318" y="295"/>
@@ -248,6 +304,15 @@
         <di:waypoint x="593" y="135"/>
         <di:waypoint x="379" y="88"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_9991E20D-A581-4CA3-83B7-A0BD35D3801D-AUTO-TARGET" dmnElementRef="_9991E20D-A581-4CA3-83B7-A0BD35D3801D">
+        <di:waypoint x="546.2990654205607" y="31"/>
+        <di:waypoint x="329" y="63"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+    <dmndi:DMNDiagram id="_91228E82-5E7F-4A0D-9769-B7EAB0B9E41F" name="new-diagram">
+      <di:extension>
+        <kie:ComponentsWidthsExtension/>
+      </di:extension>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
 </dmn:definitions>
