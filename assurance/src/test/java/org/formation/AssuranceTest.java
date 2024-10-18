@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.math.BigDecimal;
 
 import org.formation.model.Conducteur;
+import org.formation.model.TypeCarburant;
+import org.formation.model.Vehicule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.kie.api.KieServices;
@@ -39,7 +41,8 @@ public class AssuranceTest {
 	
 	@Test
 	public void test20(){
-		Conducteur conducteur = new Conducteur(20, 0, 0);
+		Vehicule vehicule = new Vehicule(20000,4, TypeCarburant.ESSENCE);
+		Conducteur conducteur = new Conducteur(20, 0, 0, vehicule);
 
 		dmnContext.set(INPUT_NODE, conducteur);
         DMNResult dmnResult =
@@ -56,7 +59,8 @@ public class AssuranceTest {
 	
 	@Test
 	public void test23_5_10(){
-		Conducteur driver = new Conducteur(23, 5, 10);
+		Vehicule vehicule = new Vehicule(100000,200, TypeCarburant.HYBRIDE);
+		Conducteur driver = new Conducteur(23, 5, 10, vehicule);
 		
 		dmnContext.set(INPUT_NODE, driver);
         DMNResult dmnResult =
