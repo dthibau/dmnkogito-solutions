@@ -1,15 +1,26 @@
 package org.formation.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.time.LocalDate;
+
 public class Vehicule {
 
     private int valeur;
+    @JsonProperty("Puissance")
     private int puissance;
-    private TypeCarburant typeCarburant;
+    @JsonProperty("TypeCarburant")
+    private int typeCarburant;
+    @JsonProperty("toto")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private String miseEnCirculation;
 
-    public Vehicule(int valeur, int puissance, TypeCarburant typeCarburant) {
+    public Vehicule(int valeur, int puissance, int typeCarburant, String miseEnCirculation) {
         this.valeur = valeur;
         this.puissance = puissance;
         this.typeCarburant = typeCarburant;
+        this.miseEnCirculation = miseEnCirculation;
     }
 
     public int getValeur() {
@@ -28,11 +39,19 @@ public class Vehicule {
         this.puissance = puissance;
     }
 
-    public TypeCarburant getTypeCarburant() {
+    public int getTypeCarburant() {
         return typeCarburant;
     }
 
-    public void setTypeCarburant(TypeCarburant typeCarburant) {
+    public void setTypeCarburant(int typeCarburant) {
         this.typeCarburant = typeCarburant;
+    }
+
+    public String getMiseEnCirculation() {
+        return miseEnCirculation;
+    }
+
+    public void setMiseEnCirculation(String miseEnCirculation) {
+        this.miseEnCirculation = miseEnCirculation;
     }
 }

@@ -1,8 +1,16 @@
 package org.formation.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Conducteur {
 
-	private int age, incidents, anciennete;
+	@JsonProperty("Age")
+	private int age;
+	@JsonProperty("Incidents")
+	int incidents;
+	@JsonProperty("ancienneté")
+	int anciennete;
+	@JsonProperty("Vehicule")
 	private Vehicule vehicule;
 
 	public Conducteur(int age, int anciennete, int incidents , Vehicule vehicule) {
@@ -35,5 +43,12 @@ public class Conducteur {
 	public void setAnciennete(int anciennete) {
 		this.anciennete = anciennete;
 	}
-	
+
+	public Vehicule getVehicule() {
+		return vehicule;
+	}
+
+	public void setVehicule(Vehicule vehicule) {
+		this.vehicule = vehicule;
+	}
 }

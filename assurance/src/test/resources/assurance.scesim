@@ -108,6 +108,110 @@
         <FactMapping>
           <expressionElements>
             <ExpressionElement>
+              <step>Conducteur</step>
+            </ExpressionElement>
+            <ExpressionElement>
+              <step>Vehicule</step>
+            </ExpressionElement>
+            <ExpressionElement>
+              <step>Type Carburant</step>
+            </ExpressionElement>
+          </expressionElements>
+          <expressionIdentifier>
+            <name>1729497081677</name>
+            <type>GIVEN</type>
+          </expressionIdentifier>
+          <factIdentifier>
+            <name>Conducteur</name>
+            <className>Conducteur</className>
+          </factIdentifier>
+          <className>string</className>
+          <factAlias>Conducteur</factAlias>
+          <expressionAlias>Vehicule.Type Carburant</expressionAlias>
+          <columnWidth>114</columnWidth>
+          <factMappingValueType>NOT_EXPRESSION</factMappingValueType>
+        </FactMapping>
+        <FactMapping>
+          <expressionElements>
+            <ExpressionElement>
+              <step>Conducteur</step>
+            </ExpressionElement>
+            <ExpressionElement>
+              <step>Vehicule</step>
+            </ExpressionElement>
+            <ExpressionElement>
+              <step>Puissance</step>
+            </ExpressionElement>
+          </expressionElements>
+          <expressionIdentifier>
+            <name>1729512601054</name>
+            <type>GIVEN</type>
+          </expressionIdentifier>
+          <factIdentifier>
+            <name>Conducteur</name>
+            <className>Conducteur</className>
+          </factIdentifier>
+          <className>number</className>
+          <factAlias>Conducteur</factAlias>
+          <expressionAlias>Vehicule.Puissance</expressionAlias>
+          <columnWidth>114</columnWidth>
+          <factMappingValueType>NOT_EXPRESSION</factMappingValueType>
+        </FactMapping>
+        <FactMapping>
+          <expressionElements>
+            <ExpressionElement>
+              <step>Conducteur</step>
+            </ExpressionElement>
+            <ExpressionElement>
+              <step>Vehicule</step>
+            </ExpressionElement>
+            <ExpressionElement>
+              <step>Valeur</step>
+            </ExpressionElement>
+          </expressionElements>
+          <expressionIdentifier>
+            <name>1729512617419</name>
+            <type>GIVEN</type>
+          </expressionIdentifier>
+          <factIdentifier>
+            <name>Conducteur</name>
+            <className>Conducteur</className>
+          </factIdentifier>
+          <className>number</className>
+          <factAlias>Conducteur</factAlias>
+          <expressionAlias>Vehicule.Valeur</expressionAlias>
+          <columnWidth>114</columnWidth>
+          <factMappingValueType>NOT_EXPRESSION</factMappingValueType>
+        </FactMapping>
+        <FactMapping>
+          <expressionElements>
+            <ExpressionElement>
+              <step>Conducteur</step>
+            </ExpressionElement>
+            <ExpressionElement>
+              <step>Vehicule</step>
+            </ExpressionElement>
+            <ExpressionElement>
+              <step>MiseEnCirculation</step>
+            </ExpressionElement>
+          </expressionElements>
+          <expressionIdentifier>
+            <name>1729514648723</name>
+            <type>GIVEN</type>
+          </expressionIdentifier>
+          <factIdentifier>
+            <name>Conducteur</name>
+            <className>Conducteur</className>
+          </factIdentifier>
+          <className>string</className>
+          <factAlias>Conducteur</factAlias>
+          <expressionAlias>Vehicule.MiseEnCirculation</expressionAlias>
+          <columnWidth>114</columnWidth>
+          <factMappingValueType>NOT_EXPRESSION</factMappingValueType>
+        </FactMapping>
+        <FactMapping>
+          <expressionElements>
+            <ExpressionElement>
               <step>Bonus ancienneté</step>
             </ExpressionElement>
           </expressionElements>
@@ -165,6 +269,26 @@
           <factAlias>Malus incidents</factAlias>
           <expressionAlias>value</expressionAlias>
           <genericTypes/>
+          <columnWidth>114</columnWidth>
+          <factMappingValueType>NOT_EXPRESSION</factMappingValueType>
+        </FactMapping>
+        <FactMapping>
+          <expressionElements>
+            <ExpressionElement>
+              <step>Coefficient Vehicule</step>
+            </ExpressionElement>
+          </expressionElements>
+          <expressionIdentifier>
+            <name>1729497259319</name>
+            <type>EXPECT</type>
+          </expressionIdentifier>
+          <factIdentifier>
+            <name>Coefficient Vehicule</name>
+            <className>Coefficient Vehicule</className>
+          </factIdentifier>
+          <className>number</className>
+          <factAlias>Coefficient Vehicule</factAlias>
+          <expressionAlias>value</expressionAlias>
           <columnWidth>114</columnWidth>
           <factMappingValueType>NOT_EXPRESSION</factMappingValueType>
         </FactMapping>
@@ -237,7 +361,7 @@
               <name>1|5</name>
               <type>EXPECT</type>
             </expressionIdentifier>
-            <rawValue class="string">500</rawValue>
+            <rawValue class="string">680</rawValue>
           </FactMappingValue>
           <FactMappingValue>
             <factIdentifier>
@@ -260,6 +384,61 @@
               <type>OTHER</type>
             </expressionIdentifier>
             <rawValue class="string">1</rawValue>
+          </FactMappingValue>
+          <FactMappingValue>
+            <factIdentifier>
+              <name>Conducteur</name>
+              <className>Conducteur</className>
+            </factIdentifier>
+            <expressionIdentifier>
+              <name>1729497081677</name>
+              <type>GIVEN</type>
+            </expressionIdentifier>
+            <rawValue class="string">1</rawValue>
+          </FactMappingValue>
+          <FactMappingValue>
+            <factIdentifier>
+              <name>Conducteur</name>
+              <className>Conducteur</className>
+            </factIdentifier>
+            <expressionIdentifier>
+              <name>1729512601054</name>
+              <type>GIVEN</type>
+            </expressionIdentifier>
+            <rawValue class="string">4</rawValue>
+          </FactMappingValue>
+          <FactMappingValue>
+            <factIdentifier>
+              <name>Conducteur</name>
+              <className>Conducteur</className>
+            </factIdentifier>
+            <expressionIdentifier>
+              <name>1729512617419</name>
+              <type>GIVEN</type>
+            </expressionIdentifier>
+            <rawValue class="string">20000</rawValue>
+          </FactMappingValue>
+          <FactMappingValue>
+            <factIdentifier>
+              <name>Coefficient Vehicule</name>
+              <className>Coefficient Vehicule</className>
+            </factIdentifier>
+            <expressionIdentifier>
+              <name>1729497259319</name>
+              <type>EXPECT</type>
+            </expressionIdentifier>
+            <rawValue class="string">1.3609596</rawValue>
+          </FactMappingValue>
+          <FactMappingValue>
+            <factIdentifier>
+              <name>Conducteur</name>
+              <className>Conducteur</className>
+            </factIdentifier>
+            <expressionIdentifier>
+              <name>1729514648723</name>
+              <type>GIVEN</type>
+            </expressionIdentifier>
+            <rawValue class="string">"2020-11-11"</rawValue>
           </FactMappingValue>
         </factMappingValues>
       </Scenario>
@@ -329,7 +508,7 @@
               <name>1|5</name>
               <type>EXPECT</type>
             </expressionIdentifier>
-            <rawValue class="string">700</rawValue>
+            <rawValue class="string">1013.6</rawValue>
           </FactMappingValue>
           <FactMappingValue>
             <factIdentifier>
@@ -353,6 +532,61 @@
             </expressionIdentifier>
             <rawValue class="string">2</rawValue>
           </FactMappingValue>
+          <FactMappingValue>
+            <factIdentifier>
+              <name>Conducteur</name>
+              <className>Conducteur</className>
+            </factIdentifier>
+            <expressionIdentifier>
+              <name>1729497081677</name>
+              <type>GIVEN</type>
+            </expressionIdentifier>
+            <rawValue class="string">2</rawValue>
+          </FactMappingValue>
+          <FactMappingValue>
+            <factIdentifier>
+              <name>Conducteur</name>
+              <className>Conducteur</className>
+            </factIdentifier>
+            <expressionIdentifier>
+              <name>1729512601054</name>
+              <type>GIVEN</type>
+            </expressionIdentifier>
+            <rawValue class="string">200</rawValue>
+          </FactMappingValue>
+          <FactMappingValue>
+            <factIdentifier>
+              <name>Conducteur</name>
+              <className>Conducteur</className>
+            </factIdentifier>
+            <expressionIdentifier>
+              <name>1729512617419</name>
+              <type>GIVEN</type>
+            </expressionIdentifier>
+            <rawValue class="string">100000</rawValue>
+          </FactMappingValue>
+          <FactMappingValue>
+            <factIdentifier>
+              <name>Coefficient Vehicule</name>
+              <className>Coefficient Vehicule</className>
+            </factIdentifier>
+            <expressionIdentifier>
+              <name>1729497259319</name>
+              <type>EXPECT</type>
+            </expressionIdentifier>
+            <rawValue class="string">1.448370</rawValue>
+          </FactMappingValue>
+          <FactMappingValue>
+            <factIdentifier>
+              <name>Conducteur</name>
+              <className>Conducteur</className>
+            </factIdentifier>
+            <expressionIdentifier>
+              <name>1729514648723</name>
+              <type>GIVEN</type>
+            </expressionIdentifier>
+            <rawValue class="string">"2010-10-10"</rawValue>
+          </FactMappingValue>
         </factMappingValues>
       </Scenario>
     </scesimData>
@@ -373,7 +607,7 @@
           <className>java.lang.Void</className>
           <factAlias>INSTANCE 1</factAlias>
           <expressionAlias>PROPERTY 1</expressionAlias>
-          <columnWidth>114</columnWidth>
+          <columnWidth>1030</columnWidth>
           <factMappingValueType>NOT_EXPRESSION</factMappingValueType>
         </FactMapping>
       </factMappings>

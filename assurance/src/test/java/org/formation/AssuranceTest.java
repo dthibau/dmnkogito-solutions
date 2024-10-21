@@ -3,7 +3,10 @@ package org.formation;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.formation.model.Conducteur;
 import org.formation.model.TypeCarburant;
 import org.formation.model.Vehicule;
@@ -17,9 +20,11 @@ import org.kie.dmn.api.core.DMNDecisionResult;
 import org.kie.dmn.api.core.DMNModel;
 import org.kie.dmn.api.core.DMNResult;
 import org.kie.dmn.api.core.DMNRuntime;
+import org.kie.dmn.api.core.ast.DecisionNode;
 
 public class AssuranceTest {
 
+	ObjectMapper objectMapper = new ObjectMapper();
 	DMNRuntime dmnRuntime;
 	DMNModel dmnModel;
 	DMNContext dmnContext;
@@ -40,13 +45,19 @@ public class AssuranceTest {
 	}
 	
 	@Test
-	public void test20(){
-		Vehicule vehicule = new Vehicule(20000,4, TypeCarburant.ESSENCE);
+	public void test20() throws JsonProcessingException {
+		Vehicule vehicule = new Vehicule(20000,4, 1, "2020-11-11");
 		Conducteur conducteur = new Conducteur(20, 0, 0, vehicule);
 
 		dmnContext.set(INPUT_NODE, conducteur);
+		System.out.println("Données d'entrée : " + dmnContext.get(INPUT_NODE));
+		// System.out.println(objectMapper.writeValueAsString(dmnContext.get(INPUT_NODE)));
         DMNResult dmnResult =
             dmnRuntime.evaluateAll(dmnModel, dmnContext);
+
+		DMNDecisionResult result = dmnResult.getDecisionResultByName("Coefficient Vehicule");
+		DMNContext resultContext = dmnResult.getContext();
+		System.out.println(resultContext);
 
 
         for (DMNDecisionResult dr : dmnResult.getDecisionResults()) {  
@@ -54,15 +65,16 @@ public class AssuranceTest {
                     "Decision: '" + dr.getDecisionName() + "', " +
                     "Result: " + dr.getResult());
         }
-        assertEquals(500d, ((BigDecimal)dmnResult.getDecisionResultByName("Final Price").getResult()).doubleValue(), 0.001d);
+        assertEquals(680d, ((BigDecimal)dmnResult.getDecisionResultByName("Final Price").getResult()).doubleValue(), 0.001d);
 	}	
 	
 	@Test
 	public void test23_5_10(){
-		Vehicule vehicule = new Vehicule(100000,200, TypeCarburant.HYBRIDE);
+		Vehicule vehicule = new Vehicule(100000,200, 2, "2010-10-10");
 		Conducteur driver = new Conducteur(23, 5, 10, vehicule);
 		
 		dmnContext.set(INPUT_NODE, driver);
+		dmnContext.get(INPUT_NODE);
         DMNResult dmnResult =
             dmnRuntime.evaluateAll(dmnModel, dmnContext);
 
@@ -73,6 +85,6 @@ public class AssuranceTest {
                     "Result: " + dr.getResult());
         }
 
-		assertEquals(700d, ((BigDecimal)dmnResult.getDecisionResultByName("Final Price").getResult()).doubleValue(), 0.001d);
+		assertEquals(1013.6d, ((BigDecimal)dmnResult.getDecisionResultByName("Final Price").getResult()).doubleValue(), 0.001d);
 	}
 }
